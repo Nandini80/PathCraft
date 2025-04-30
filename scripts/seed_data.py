@@ -3,7 +3,6 @@ import os
 from datetime import date, time
 from decimal import Decimal
 
-# Add parent directory to path to import app modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from app.database import SessionLocal, engine, Base
@@ -15,13 +14,11 @@ def seed_database():
     """
     print("Starting database seeding...")
     
-    # Create tables if they don't exist
     Base.metadata.create_all(bind=engine)
     
     db = SessionLocal()
     
     try:
-        # Clear existing data
         db.query(Activity).delete()
         db.query(Transfer).delete()
         db.query(Accommodation).delete()
@@ -30,7 +27,6 @@ def seed_database():
         
         print("Existing data cleared. Creating new seed data...")
         
-        # Create itineraries for different durations (2-8 nights)
         durations = [2, 3, 4, 5, 6, 7, 8]
         regions = ["Phuket", "Krabi"]
         
@@ -48,7 +44,6 @@ def seed_database():
             {"name": "Elephant Sanctuary Visit", "description": "Ethical elephant experience at a local sanctuary"}
         ]
         
-        # Krabi activities
         krabi_activities = [
             {"name": "Four Islands Tour", "description": "Visit Chicken Island, Tup Island, Poda Island, and Phra Nang Cave Beach"},
             {"name": "Railay Beach Day", "description": "Explore the stunning limestone cliffs and beaches of Railay"},
@@ -62,12 +57,10 @@ def seed_database():
             {"name": "Island Hopping Tour", "description": "Explore multiple islands in the Andaman Sea in one day"}
         ]
         
-        # Create itineraries for each duration and region
         for region in regions:
             activities = phuket_activities if region == "Phuket" else krabi_activities
             
             for nights in durations:
-                # Create itinerary name based on duration
                 if nights <= 3:
                     itinerary_type = "Quick Getaway"
                 elif nights >= 7:
@@ -77,25 +70,22 @@ def seed_database():
                 
                 itinerary_name = f"{region} {nights}-Night {itinerary_type}"
                 
-                # Create itinerary
-                # In scripts/seed_data.py
-# When creating itineraries:
                 itinerary = Itinerary(
                     name=itinerary_name,
                     region=region,
                     nights=nights,
                     description=f"Experience the best of {region} in {nights} nights",
-                    highlights=[a["name"] for a in activities[:3]],  # This will use the property setter
+                    highlights=[a["name"] for a in activities[:3]],  
                     price_estimate=Decimal(800 + (nights * 150)),
-                    tags=["beach", "culture", "nightlife" if region == "Phuket" else "nature"],  # This will use the property setter
+                    tags=["beach", "culture", "nightlife" if region == "Phuket" else "nature"], 
                     is_recommended=True
                 )
                 db.add(itinerary)
-                db.flush()  # Flush to get the itinerary ID
+                db.flush() 
                 
                 # Create days for this itinerary
-                for day_num in range(1, nights + 2):  # +2 because day 1 is arrival, last day is departure
-                    day_date = date(2023, 6, day_num)  # Example date
+                for day_num in range(1, nights + 2):  
+                    day_date = date(2023, 6, day_num)  
                     
                     day = Day(
                         day_number=day_num,
@@ -103,7 +93,7 @@ def seed_database():
                         itinerary_id=itinerary.id
                     )
                     db.add(day)
-                    db.flush()  # Flush to get the day ID
+                    db.flush() 
                     
                     # Add accommodation for each day
                     hotel_name = f"{region} {'Beach' if region == 'Phuket' else 'Cliff'} Resort"
