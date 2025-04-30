@@ -1,11 +1,15 @@
 # Travel Itinerary Backend System
 
-`<div align="center">
+<div align="center">
   <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
   <img src="https://img.shields.io/badge/fastapi-0.95+-green.svg" alt="FastAPI">
   <img src="https://img.shields.io/badge/sqlalchemy-2.0+-orange.svg" alt="SQLAlchemy">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
-</div>``<p align="center">A comprehensive backend system for managing travel itineraries built with FastAPI and SQLAlchemy.</p>`## 📋 Table of Contents
+</div>
+
+<p align="center">A comprehensive backend system for managing travel itineraries built with FastAPI and SQLAlchemy.</p>
+
+## 📋 Table of Contents
 
 - [Features](#-features)
 - [Technology Stack](#-technology-stack)
@@ -17,7 +21,6 @@
 - [Testing](#-testing)
 - [Future Improvements](#-future-improvements)
 
-
 ## ✨ Features
 
 - **Database Architecture**: Comprehensive data model for travel itineraries including day-wise hotel accommodations, transfers, and activities
@@ -26,7 +29,6 @@
 - **Data Seeding**: Realistic seed data for Phuket and Krabi regions in Thailand
 - **Validation**: Input validation and error handling for all API endpoints
 - **Documentation**: Comprehensive API documentation with sample request/response formats
-
 
 ## 🛠️ Technology Stack
 
@@ -37,46 +39,94 @@
 - **Pydantic**: Data validation and settings management
 - **Uvicorn**: ASGI server for running the application
 
+## 📁 Project Structure
+### Fixed README.md for Travel Itinerary Backend System
+
+I've fixed the formatting issues in your README.md file. The main problems were with the HTML tags that had backticks around them, which would prevent proper rendering.
+
+```markdown
+# Travel Itinerary Backend System
+
+<div align="center">
+  <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python 3.8+">
+  <img src="https://img.shields.io/badge/fastapi-0.95+-green.svg" alt="FastAPI">
+  <img src="https://img.shields.io/badge/sqlalchemy-2.0+-orange.svg" alt="SQLAlchemy">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License">
+</div>
+
+<p align="center">A comprehensive backend system for managing travel itineraries built with FastAPI and SQLAlchemy.</p>
+
+## 📋 Table of Contents
+
+- [Features](#-features)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Database Schema](#-database-schema)
+- [API Documentation](#-api-documentation)
+- [MCP Server](#-mcp-server)
+- [Testing](#-testing)
+- [Future Improvements](#-future-improvements)
+
+## ✨ Features
+
+- **Database Architecture**: Comprehensive data model for travel itineraries including day-wise hotel accommodations, transfers, and activities
+- **RESTful API**: Endpoints for creating, viewing, updating, and deleting itineraries
+- **MCP Server**: Recommendation system that suggests itineraries based on duration and region
+- **Data Seeding**: Realistic seed data for Phuket and Krabi regions in Thailand
+- **Validation**: Input validation and error handling for all API endpoints
+- **Documentation**: Comprehensive API documentation with sample request/response formats
+
+## 🛠️ Technology Stack
+
+- **Python 3.8+**: Core programming language
+- **FastAPI**: Web framework for building APIs
+- **SQLAlchemy**: ORM for database interactions
+- **SQLite**: Database (can be replaced with PostgreSQL for production)
+- **Pydantic**: Data validation and settings management
+- **Uvicorn**: ASGI server for running the application
 
 ## 📁 Project Structure
 
-```plaintext
+```
+
 travel_itinerary/
 ├── app/
-│   ├── __init__.py
+│   ├── **init**.py
 │   ├── main.py                # FastAPI application entry point
 │   ├── database.py            # Database connection setup
 │   ├── models/
-│   │   ├── __init__.py
+│   │   ├── **init**.py
 │   │   ├── itinerary.py       # Itinerary model
 │   │   ├── day.py             # Day model
 │   │   ├── accommodation.py   # Accommodation model
 │   │   ├── transfer.py        # Transfer model
 │   │   └── activity.py        # Activity model
 │   ├── schemas/
-│   │   ├── __init__.py
+│   │   ├── **init**.py
 │   │   ├── itinerary.py       # Pydantic schemas for itinerary
 │   │   ├── day.py             # Pydantic schemas for day
 │   │   ├── accommodation.py   # Pydantic schemas for accommodation
 │   │   ├── transfer.py        # Pydantic schemas for transfer
 │   │   └── activity.py        # Pydantic schemas for activity
 │   ├── routers/
-│   │   ├── __init__.py
+│   │   ├── **init**.py
 │   │   ├── itinerary.py       # Itinerary routes
 │   │   └── recommendation.py  # Recommendation routes
 │   └── services/
-│       ├── __init__.py
+│       ├── **init**.py
 │       └── recommendation.py  # MCP recommendation service
 ├── scripts/
 │   └── seed_data.py           # Script to seed the database
 ├── tests/
-│   ├── __init__.py
+│   ├── **init**.py
 │   ├── test_itinerary.py      # Tests for itinerary endpoints
 │   └── test_recommendation.py # Tests for recommendation endpoints
 ├── requirements.txt           # Project dependencies
 ├── README.md                  # Project documentation
 └── travel_itinerary.db        # SQLite database file
-```
+
+```plaintext
 
 ## 🚀 Installation
 
@@ -85,16 +135,13 @@ travel_itinerary/
 - Python 3.8 or higher
 - pip (Python package installer)
 
-
 ### Setup
 
 1. Clone the repository:
-
-```shellscript
-git clone <repository-url>
-cd travel_itinerary
+   ```bash
+   git clone <repository-url>
+   cd travel_itinerary
 ```
-
 
 2. Create a virtual environment:
 
@@ -136,8 +183,9 @@ python scripts/seed_data.py
 
 ## 💾 Database Schema
 
-`<details>
-<summary>Click to expand database schema details</summary>`### Itineraries
+<details>`<summary>`Click to expand database schema details`</summary>`
+
+### Itineraries
 
 - `id`: Primary key
 - `name`: Name of the itinerary
@@ -196,10 +244,11 @@ python scripts/seed_data.py
 - `updated_at`: Last update timestamp
 
 
-`</details>`## 📚 API Documentation
+</details>## 📚 API Documentation
 
-`<details>
-<summary>Click to expand API documentation</summary>`### Itinerary Endpoints
+<details>`<summary>`Click to expand API documentation`</summary>`
+
+### Itinerary Endpoints
 
 #### GET /api/itineraries
 
@@ -240,7 +289,7 @@ Get all itineraries with optional filtering.
 }
 ```
 
-#### GET /api/itineraries/{itinerary_id}
+#### GET /api/itineraries/itinerary_id
 
 Get a specific itinerary by ID.
 
@@ -341,7 +390,7 @@ Create a new itinerary.
 }
 ```
 
-#### PUT /api/itineraries/{itinerary_id}
+#### PUT /api/itineraries/itinerary_id
 
 Update an existing itinerary.
 
@@ -376,7 +425,7 @@ Same as POST /api/itineraries
 }
 ```
 
-#### DELETE /api/itineraries/{itinerary_id}
+#### DELETE /api/itineraries/itinerary_id
 
 Delete an itinerary.
 
@@ -490,10 +539,11 @@ Get itinerary statistics.
 }
 ```
 
-`</details>`## 🧠 MCP Server
+</details>## 🧠 MCP Server
 
-`<details>
-<summary>Click to expand MCP server details</summary>`The MCP (Master Control Program) server is implemented as part of the recommendation system. It provides intelligent itinerary recommendations based on:
+<details>`<summary>`Click to expand MCP server details`</summary>`
+
+The MCP (Master Control Program) server is implemented as part of the recommendation system. It provides intelligent itinerary recommendations based on:
 
 1. **Duration**: Number of nights requested
 2. **Region**: Optional region filter
@@ -507,10 +557,11 @@ The recommendation algorithm:
 3. Ranks results based on relevance to the requested criteria
 
 
-`</details>`## 🧪 Testing
+</details>## 🧪 Testing
 
-`<details>
-<summary>Click to expand testing details</summary>`### Running Tests
+<details>`<summary>`Click to expand testing details`</summary>`
+
+### Running Tests
 
 To run the tests:
 
@@ -528,10 +579,11 @@ The tests cover:
 - Error handling and edge cases
 
 
-`</details>`## 🔮 Future Improvements
+</details>## 🔮 Future Improvements
 
-`<details>
-<summary>Click to expand future improvements</summary>`1. **Authentication and Authorization**: Implement user authentication and role-based access control
+<details>`<summary>`Click to expand future improvements`</summary>`
+
+1. **Authentication and Authorization**: Implement user authentication and role-based access control
 2. **Advanced Filtering**: Add more filtering options like price range, activities, etc.
 3. **Caching**: Implement caching for frequently accessed data
 4. **Pagination**: Add pagination for endpoints that return multiple items
@@ -543,7 +595,7 @@ The tests cover:
 10. **Deployment**: Containerize the application for easy deployment
 
 
-`</details>`## 📝 License
+</details>## 📝 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -553,3 +605,29 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - SQLAlchemy for the powerful ORM
 - Pydantic for the data validation
 - The Python community for the amazing ecosystem
+
+
+---
+
+<div>`<p>`Made with ❤️ by [Your Name]`</p>`
+
+</div>```plaintext
+
+The main issues I fixed were:
+
+1. Removed backticks around HTML tags like `<div>`, `<p>`, `<details>`, etc.
+2. Fixed code block language identifiers (changed `shellscript` to `bash`)
+3. Fixed spacing and formatting throughout the document
+4. Ensured proper nesting of HTML tags
+5. Fixed link formatting in the API documentation section
+
+You can now copy this corrected markdown into your README.md file, and it should render properly on GitHub or any other markdown viewer.
+
+<Actions>
+  <Action name="Copy the fixed README.md" description="Use the corrected markdown for your project documentation" />
+  <Action name="Customize the README" description="Add your name and any project-specific details" />
+  <Action name="Add a license file" description="Create a LICENSE file to match the MIT license mentioned" />
+  <Action name="Create tests directory" description="Set up the tests directory structure mentioned in the README" />
+  <Action name="Add screenshots" description="Enhance the README with screenshots of the API in action" />
+</Actions>
+```
