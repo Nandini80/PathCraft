@@ -20,21 +20,19 @@ def create_itinerary(itinerary: ItineraryCreate, db: Session = Depends(get_db)):
     Create a new itinerary with days, accommodations, transfers, and activities.
     """
     try:
-        # Create itinerary
         db_itinerary = Itinerary(
             name=itinerary.name,
             region=itinerary.region,
             nights=itinerary.nights,
             description=itinerary.description,
-            highlights=itinerary.highlights,  # This will use the property setter
+            highlights=itinerary.highlights,  
             price_estimate=itinerary.price_estimate,
-            tags=itinerary.tags,  # This will use the property setter
+            tags=itinerary.tags,
             is_recommended=itinerary.is_recommended
         )
         db.add(db_itinerary)
         db.flush()  # Flush to get the itinerary ID
         
-        # Create days and related entities
         for day_data in itinerary.days:
             db_day = Day(
                 day_number=day_data.day_number,
@@ -42,7 +40,7 @@ def create_itinerary(itinerary: ItineraryCreate, db: Session = Depends(get_db)):
                 itinerary_id=db_itinerary.id
             )
             db.add(db_day)
-            db.flush()  # Flush to get the day ID
+            db.flush()  
             
             # Create accommodations
             for acc_data in day_data.accommodations:
@@ -105,7 +103,6 @@ def get_itineraries(
     try:
         query = db.query(Itinerary)
         
-        # Apply filters
         if region:
             query = query.filter(Itinerary.region == region)
         
@@ -117,7 +114,6 @@ def get_itineraries(
             if max_nights:
                 query = query.filter(Itinerary.nights <= max_nights)
         
-        # Apply sorting
         if sort == "nights_asc":
             query = query.order_by(Itinerary.nights.asc())
         elif sort == "nights_desc":
@@ -172,12 +168,11 @@ def update_itinerary(itinerary_id: int, itinerary_data: ItineraryCreate, db: Ses
         )
     
     try:
-        # Update basic itinerary details
+        # Update details
         for key, value in itinerary_data.dict(exclude={"days"}).items():
             setattr(db_itinerary, key, value)
         
         # For simplicity, we're not updating nested entities here
-        # In a real application, you would handle updating days, accommodations, etc.
         
         db.commit()
         db.refresh(db_itinerary)

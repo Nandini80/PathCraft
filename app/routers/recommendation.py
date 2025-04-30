@@ -23,24 +23,19 @@ def get_recommendations(
     MCP Server: Get recommended itineraries based on nights and optional filters.
     """
     try:
-        # Build query
         query = db.query(Itinerary).filter(Itinerary.nights == nights)
         
         if region:
             query = query.filter(Itinerary.region == region)
         
-        # Get exact matches
         recommendations = query.all()
         
-        # If no exact matches, find closest alternatives
         if not recommendations:
             closest_query = db.query(Itinerary)
             
-            # Add region filter if provided
             if region:
                 closest_query = closest_query.filter(Itinerary.region == region)
             
-            # Find itineraries with nights close to requested nights
             closest_query = closest_query.order_by(
                 func.abs(Itinerary.nights - nights)
             ).limit(3)
@@ -62,11 +57,8 @@ def get_recommendations(
                 "message": "No itineraries found for the given criteria."
             }
         
-        # Apply interest-based filtering if provided
         if interests:
             interest_list = interests.split(',')
-            # In a real implementation, you would filter based on activities matching interests
-            # For simplicity, we're just returning all matches for now
         
         return {
             "success": True,

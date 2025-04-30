@@ -19,14 +19,10 @@ class Itinerary(Base):
     _tags = Column("tags", Text, nullable=True)
     is_recommended = Column(Boolean, default=False)
     
-    # SQLite-compatible timestamp defaults
     created_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
     updated_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
-    
-    # Relationships
     days = relationship("Day", back_populates="itinerary", cascade="all, delete-orphan")
     
-    # Property methods for JSON serialization
     @property
     def highlights(self):
         if not self._highlights:

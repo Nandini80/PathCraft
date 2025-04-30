@@ -14,9 +14,6 @@ class Transfer(Base):
     departure_time = Column(Time, nullable=True)
     day_id = Column(Integer, ForeignKey("days.id", ondelete="CASCADE"), nullable=False)
     
-    # SQLite-compatible timestamp defaults
     created_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
     updated_at = Column(TIMESTAMP, server_default=text('CURRENT_TIMESTAMP'))
-    
-    # Relationships
     day = relationship("Day", back_populates="transfers")

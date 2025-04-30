@@ -1,12 +1,13 @@
 # python -m venv venv
 # venv/bin/activate
+
+# uvicorn app.main:app --reload
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.routers import itinerary_router, recommendation_router
 
-# Create tables
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
@@ -15,7 +16,6 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -24,7 +24,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include routers
 app.include_router(itinerary_router)
 app.include_router(recommendation_router)
 
@@ -52,7 +51,6 @@ def api_info():
         }
     }
 
-# Exception handler
 @app.exception_handler(HTTPException)
 async def http_exception_handler(request: Request, exc: HTTPException):
     return JSONResponse(
@@ -63,7 +61,6 @@ async def http_exception_handler(request: Request, exc: HTTPException):
         }
     )
 
-# Global exception handler
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
     return JSONResponse(
