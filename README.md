@@ -36,34 +36,34 @@ travel_itinerary/
 │   ├── database.py            # Database connection setup
 │   ├── models/
 │   │   ├── __init__.py
-│   │   ├── itinerary.py       # Itinerary model
-│   │   ├── day.py             # Day model
-│   │   ├── accommodation.py   # Accommodation model
-│   │   ├── transfer.py        # Transfer model
-│   │   └── activity.py        # Activity model
+│   │   ├── itinerary.py      
+│   │   ├── day.py            
+│   │   ├── accommodation.py  
+│   │   ├── transfer.py       
+│   │   └── activity.py       
 │   ├── schemas/
 │   │   ├── __init__.py
-│   │   ├── itinerary.py       # Pydantic schemas for itinerary
-│   │   ├── day.py             # Pydantic schemas for day
-│   │   ├── accommodation.py   # Pydantic schemas for accommodation
-│   │   ├── transfer.py        # Pydantic schemas for transfer
-│   │   └── activity.py        # Pydantic schemas for activity
+│   │   ├── itinerary.py      
+│   │   ├── day.py            
+│   │   ├── accommodation.py  
+│   │   ├── transfer.py       
+│   │   └── activity.py       
 │   ├── routers/
 │   │   ├── __init__.py
-│   │   ├── itinerary.py       # Itinerary routes
-│   │   └── recommendation.py  # Recommendation routes
+│   │   ├── itinerary.py      
+│   │   └── recommendation.py 
 │   └── services/
 │       ├── __init__.py
-│       └── recommendation.py  # MCP recommendation service
+│       └── recommendation.py 
 ├── scripts/
-│   └── seed_data.py           # Script to seed the database
+│   └── seed_data.py          
 ├── tests/
 │   ├── __init__.py
-│   ├── test_itinerary.py      # Tests for itinerary endpoints
-│   └── test_recommendation.py # Tests for recommendation endpoints
-├── requirements.txt           # Project dependencies
-├── README.md                  # Project documentation
-└── travel_itinerary.db        # SQLite database file
+│   ├── test_itinerary.py     
+│   └── test_recommendation.py 
+├── requirements.txt           
+├── README.md                  
+└── travel_itinerary.db        
 ```
 
 ## 🚀 Installation
@@ -81,8 +81,6 @@ travel_itinerary/
 ```
 
 2. Create a virtual environment:
-
-```shellscript
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
