@@ -606,6 +606,4 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Pydantic for the data validation
 - The Python community for the amazing ecosystem
 
-
----
 ```
