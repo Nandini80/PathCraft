@@ -1,5 +1,5 @@
 # python -m venv venv
-# venv/bin/activate
+# venv/Scripts/activate
 
 # uvicorn app.main:app --reload
 from fastapi import FastAPI, HTTPException, Request
@@ -7,8 +7,10 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from app.database import engine, Base
 from app.routers import itinerary_router, recommendation_router
+from scripts.seed_data import seed_database
 
 Base.metadata.create_all(bind=engine)
+seed_database() 
 
 app = FastAPI(
     title="Travel Itinerary API",
