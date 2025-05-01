@@ -1,7 +1,7 @@
 # python -m venv venv
 # venv/Scripts/activate
-
 # uvicorn app.main:app --reload
+
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
